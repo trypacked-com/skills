@@ -1,0 +1,64 @@
+---
+description: Packed design system rules
+globs:
+alwaysApply: true
+---
+
+# Packed — design rules
+
+Full reference: `STYLE_GUIDE.md`, `registry/styles/packed-theme-tokens.css`.
+Non-negotiable — do not reintroduce framework defaults (cool-grey ramps,
+hard-black shadows, sharp corners).
+
+## The one rule
+**Tokens are the contract.** Never hard-code a hex, px, font, or shadow. Reference
+semantic tokens (`--brand`, `--text-muted`, `--grad-cta`), not raw scale steps.
+
+## Color
+- Warm, sunset-led. Brand orange `#FF6B2C` (`--brand`) anchors actions and logo.
+  Sky blue `#2B8CD9` (`--accent`) is reserved for weather / sky / flight-status.
+- Warm sand neutrals (cream `--bg-app`, white cards). **No cool grey, no pure black**
+  — never introduce `gray-*`.
+- **Proportion 70/20/10:** cream + white first, one orange for action, blue sparingly.
+- Utility hues are functional only (status fg/bg pairs).
+- Gradients on heroes/CTAs only — not resting surfaces.
+
+## Type
+- **Lora** — display/headlines (600, `-0.02em`). Never body/UI in serif.
+- **Figtree** — all UI/body (300–800). Body line-height 1.65.
+- **DM Mono** — numbers, times, flight codes, gates.
+- Sentence case; ALL-CAPS only for `.pk-eyebrow`.
+- Fonts via `@fontsource` — no runtime CDN.
+
+## Spacing · radius · borders
+- Spacing: 4px base unit. Scale: 4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64 / 80 / 96.
+- Radius: soft — inputs/buttons 12, cards 16, hero 20–28, pills full.
+- Borders: 1px `--border-subtle`/`--border-default`; form controls 1.5px → `--border-brand` on focus.
+
+## Elevation
+- Warm-tinted shadows via role aliases (`--elev-card`, `--elev-popover`, `--elev-modal`).
+- Glass/blur only for floating chrome over content — never decorative.
+
+## Motion
+- `--dur-fast 120ms`, `--dur-base 200ms`, `--dur-slow 320ms`. Nothing harsh.
+- Respect `prefers-reduced-motion`.
+
+## States
+- Hover: `--brand` → `--brand-hover`, lift `-1px`; ghost → `--brand-subtle`.
+- Press: settles back. No colour inversion.
+- Focus: `--ring-focus` halo at `--ring-width 3px`.
+
+## Voice (for any UI copy)
+- Warm, calm, quietly capable. **You** / **we**. Sentence case. No emoji.
+- ✅ "Heads up — your gate just moved to B7."
+- ❌ "ALERT: Gate reassignment event detected."
+
+## Iconography
+- Lucide, stroke **2**, currentColor. Sizes 16/20/24. No emoji as icons.
+
+## Logo
+- `@packed/logo` from the registry. Never below 24px.
+
+## Registry
+- `"@packed": "https://ui.trypacked.dev/r/{name}.json"`
+- Theme first: `bunx shadcn@latest add @packed/theme`
